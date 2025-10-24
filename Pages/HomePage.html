@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Cars - Ma Collection</title>
+    <link rel="stylesheet" href="../Styles/style.css">
+    </head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <span class="logo-icon">🏎️</span>
+                <h1>Dream Cars</h1>
+            </div>
+            <div class="header-controls">
+                <button class="theme-toggle" id="themeToggle">
+                    <span id="themeIcon">🌙</span>
+                </button>
+                <button class="add-btn" id="addCarBtn">
+                    <span>➕</span>
+                    <span>Ajouter une voiture</span>
+                </button>
+            </div>
+        </header>
+
+        <div class="stats" id="stats">
+            <div class="stat-card">
+                <div class="stat-number" id="totalCars">0</div>
+                <div class="stat-label">Voitures</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalValue">0€</div>
+                <div class="stat-label">Valeur totale</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="avgPrice">0€</div>
+                <div class="stat-label">Prix moyen</div>
+            </div>
+        </div>
+
+        <div class="filters">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Rechercher une voiture...">
+                <span class="search-icon">🔍</span>
+            </div>
+            <select class="filter-select" id="brandFilter">
+                <option value="">Toutes les marques</option>
+            </select>
+            <select class="filter-select" id="sortFilter">
+                <option value="newest">Plus récent</option>
+                <option value="oldest">Plus ancien</option>
+                <option value="price-high">Prix décroissant</option>
+                <option value="price-low">Prix croissant</option>
+            </select>
+        </div>
+
+        <div class="cars-grid" id="carsGrid"></div>
+    </div>
+
+    <div class="modal" id="carModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Ajouter une voiture</h2>
+                <button class="close-btn" id="closeModal">×</button>
+            </div>
+            <form id="carForm">
+                <input type="hidden" id="carId">
+                <div class="form-group">
+                    <label for="carBrand">Marque *</label>
+                    <input type="text" id="carBrand" required>
+                    <span class="error-message" id="brandError">Veuillez entrer une marque</span>
+                </div>
+                <div class="form-group">
+                    <label for="carModel">Modèle *</label>
+                    <input type="text" id="carModel" required>
+                    <span class="error-message" id="modelError">Veuillez entrer un modèle</span>
+                </div>
+                <div class="form-group">
+                    <label for="carYear">Année *</label>
+                    <input type="number" id="carYear" min="1900" max="2025" required>
+                    <span class="error-message" id="yearError">Veuillez entrer une année valide</span>
+                </div>
+                <div class="form-group">
+                    <label for="carPrice">Prix (€) *</label>
+                    <input type="number" id="carPrice" min="0" step="1000" required>
+                    <span class="error-message" id="priceError">Veuillez entrer un prix valide</span>
+                </div>
+                <div class="form-group">
+                    <label for="carImage">URL de l'image</label>
+                    <input type="url" id="carImage" placeholder="https://...">
+                </div>
+                <div class="form-group">
+                    <label for="carDescription">Description</label>
+                    <textarea id="carDescription" placeholder="Décrivez votre voiture de rêve..."></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelBtn">Annuler</button>
+                    <button type="submit" class="btn btn-primary" id="submitBtn">Ajouter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="../Scripts/script.js"></script>
+</body>
