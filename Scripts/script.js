@@ -80,17 +80,22 @@ const exampleCars = [
 
 // Initialisation
 function init() {
-    loadFromStorage();
     loadThemeFromStorage();
 
+    // Si aucune voiture n'est encore stockée, on met les exemples dans le localStorage
+    if (!localStorage.getItem('dreamCars')) {
+        localStorage.setItem('dreamCars', JSON.stringify(exampleCars));
+    }
+    loadFromStorage();
     // Si aucune voiture, ajouter les exemples
     if (stateProxy.cars.length === 0) {
         stateProxy.cars = [...exampleCars];
-    } else {
-        applyFilters();
-        updateStats();
-        updateBrandFilter();
     }
+    loadFromStorage();
+
+    applyFilters();
+    updateStats();
+    updateBrandFilter();
 
     attachEventListeners();
 }
@@ -225,6 +230,11 @@ function renderCars() {
                 `;
         return;
     }
+    window.toggleFavorite = function (id) {
+        stateProxy.cars = state.cars.map(car =>
+            car.id === id ? { ...car, isFavorite: !car.isFavorite } : car
+        );
+    };
 
     grid.innerHTML = state.filteredCars.map(car => `
                 <div class="car-card" data-id="${car.id}">
@@ -241,6 +251,9 @@ function renderCars() {
                         <p class="car-description">${car.description || 'Aucune description disponible.'}</p>
                         <div class="car-price">${formatPrice(car.price)}</div>
                         <div class="car-actions">
+                        <button class="car-action-btn btn-fav" onclick="toggleFavorite(${car.id})">
+                            ${car.isFavorite ? '❤️' : '🤍'}
+                            </button>
                             <button class="car-action-btn btn-edit" onclick="editCar(${car.id})">
                                 <span>✏️</span> Modifier
                             </button>

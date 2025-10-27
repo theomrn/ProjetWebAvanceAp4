@@ -490,6 +490,11 @@ header {
     gap: 5px;
 }
 
+.btn-fav:hover {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
 .btn-edit {
     background: var(--success);
     color: white;
