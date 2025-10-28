@@ -143,7 +143,7 @@ function loadThemeFromStorage() {
 // Gestion du thème
 function applyTheme() {
     document.documentElement.setAttribute('data-theme', state.theme);
-    document.getElementById('themeIcon').textContent = state.theme === 'dark' ? '☀️' : '🌙';
+    document.getElementById('themeIcon').textContent = state.theme === 'dark' ? '☀️' : '☾';
 }
 
 function toggleTheme() {
@@ -255,10 +255,10 @@ function renderCars() {
                             ${car.isFavorite ? '❤️' : '🤍'}
                             </button>
                             <button class="car-action-btn btn-edit" onclick="editCar(${car.id})">
-                                <span>✏️</span> Modifier
+                                Modifier
                             </button>
                             <button class="car-action-btn btn-delete" onclick="deleteCar(${car.id})">
-                                <span>🗑️</span> Supprimer
+                                Supprimer
                             </button>
                         </div>
                     </div>

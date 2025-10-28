@@ -16,6 +16,8 @@
     --shadow: rgba(0, 0, 0, 0.1);
     --success: #06d6a0;
     --delete: #ef476f;
+    --like: #ff87ff;
+    --like-hover: #e055e0;
 }
 
 [data-theme="dark"] {
@@ -490,8 +492,13 @@ header {
     gap: 5px;
 }
 
+.btn-fav {
+    background: var(--like);
+    color: var(--text-primary);
+}
+
 .btn-fav:hover {
-    background: var(--bg-secondary);
+    background: var(--like-hover);
     color: var(--text-primary);
 }
 
