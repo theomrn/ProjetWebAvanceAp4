@@ -10,8 +10,8 @@
     --bg-card: #ffffff;
     --text-primary: #1a1a1a;
     --text-secondary: #666666;
-    --accent: #e63946;
-    --accent-hover: #d62828;
+    --accent: #3950e6;
+    --accent-hover: #3145c8;
     --border: #e0e0e0;
     --shadow: rgba(0, 0, 0, 0.1);
     --success: #06d6a0;
@@ -141,7 +141,7 @@ header {
 .stat-number {
     font-size: 2.5rem;
     font-weight: 800;
-    color: var(--accent);
+    color: var(--text-primary);
     margin-bottom: 5px;
 }
 
@@ -435,7 +435,7 @@ header {
 }
 
 .car-brand {
-    color: var(--accent);
+    color: var(--primary);
     font-size: 0.85rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -468,7 +468,7 @@ header {
 .car-price {
     font-size: 1.8rem;
     font-weight: 800;
-    color: var(--accent);
+    color: var(--text-secondary);
     margin-bottom: 20px;
 }
 
