@@ -82,12 +82,10 @@ const exampleCars = [
 function init() {
     loadThemeFromStorage();
 
-    // Si aucune voiture n'est encore stockée, on met les exemples dans le localStorage
     if (!localStorage.getItem('dreamCars')) {
         localStorage.setItem('dreamCars', JSON.stringify(exampleCars));
     }
     loadFromStorage();
-    // Si aucune voiture, ajouter les exemples
     if (stateProxy.cars.length === 0) {
         stateProxy.cars = [...exampleCars];
     }
@@ -100,7 +98,6 @@ function init() {
     attachEventListeners();
 }
 
-// Gestion du stockage
 function saveToStorage() {
     const data = JSON.stringify(state.cars);
     try {
@@ -140,7 +137,6 @@ function loadThemeFromStorage() {
     }
 }
 
-// Gestion du thème
 function applyTheme() {
     document.documentElement.setAttribute('data-theme', state.theme);
     document.getElementById('themeIcon').textContent = state.theme === 'dark' ? '☀️' : '☾';
@@ -150,11 +146,9 @@ function toggleTheme() {
     stateProxy.theme = state.theme === 'light' ? 'dark' : 'light';
 }
 
-// Filtres et tri
 function applyFilters() {
     let filtered = [...state.cars];
 
-    // Recherche
     if (state.searchTerm) {
         const term = state.searchTerm.toLowerCase();
         filtered = filtered.filter(car =>
@@ -164,12 +158,10 @@ function applyFilters() {
         );
     }
 
-    // Filtre par marque
     if (state.brandFilter) {
         filtered = filtered.filter(car => car.brand === state.brandFilter);
     }
 
-    // Tri
     switch (state.sortFilter) {
         case 'newest':
             filtered.sort((a, b) => b.id - a.id);
@@ -188,7 +180,6 @@ function applyFilters() {
     stateProxy.filteredCars = filtered;
 }
 
-// Mise à jour du filtre de marques
 function updateBrandFilter() {
     const brands = [...new Set(state.cars.map(car => car.brand))].sort();
     const select = document.getElementById('brandFilter');
@@ -205,7 +196,6 @@ function updateBrandFilter() {
     select.value = currentValue;
 }
 
-// Statistiques
 function updateStats() {
     const total = state.cars.length;
     const totalValue = state.cars.reduce((sum, car) => sum + car.price, 0);
@@ -216,7 +206,6 @@ function updateStats() {
     document.getElementById('avgPrice').textContent = formatPrice(avgPrice);
 }
 
-// Rendu des voitures
 function renderCars() {
     const grid = document.getElementById('carsGrid');
 
@@ -266,7 +255,6 @@ function renderCars() {
             `).join('');
 }
 
-// Formatage du prix
 function formatPrice(price) {
     return new Intl.NumberFormat('fr-FR', {
         style: 'currency',
@@ -276,7 +264,6 @@ function formatPrice(price) {
     }).format(price);
 }
 
-// Gestion du formulaire
 function openModal(carId = null) {
     const modal = document.getElementById('carModal');
     const form = document.getElementById('carForm');
@@ -369,14 +356,12 @@ function submitForm(e) {
     };
 
     if (state.currentCarId) {
-        // Modification
         stateProxy.cars = state.cars.map(car =>
             car.id === state.currentCarId
                 ? { ...car, ...carData }
                 : car
         );
     } else {
-        // Ajout
         const newCar = {
             id: Date.now(),
             ...carData
@@ -387,7 +372,6 @@ function submitForm(e) {
     closeModal();
 }
 
-// Fonctions globales pour les boutons
 window.editCar = function (id) {
     openModal(id);
 };
@@ -406,30 +390,22 @@ window.deleteCar = function (id) {
     }
 };
 
-// Event listeners
 function attachEventListeners() {
-    // Thème
     document.getElementById('themeToggle').addEventListener('click', toggleTheme);
-
-    // Modal
     document.getElementById('addCarBtn').addEventListener('click', () => openModal());
     document.getElementById('closeModal').addEventListener('click', closeModal);
     document.getElementById('cancelBtn').addEventListener('click', closeModal);
 
-    // Fermeture du modal en cliquant à l'extérieur
     document.getElementById('carModal').addEventListener('click', (e) => {
         if (e.target.id === 'carModal') closeModal();
     });
 
-    // Formulaire
     document.getElementById('carForm').addEventListener('submit', submitForm);
 
-    // Recherche
     document.getElementById('searchInput').addEventListener('input', (e) => {
         stateProxy.searchTerm = e.target.value;
     });
 
-    // Filtres
     document.getElementById('brandFilter').addEventListener('change', (e) => {
         stateProxy.brandFilter = e.target.value;
     });
@@ -439,5 +415,4 @@ function attachEventListeners() {
     });
 }
 
-// Démarrage de l'application
 init()
