@@ -51,12 +51,12 @@ const exampleCars = [
     },
     {
         id: Date.now() + 2,
-        brand: 'Porsche',
-        model: '911 Turbo S',
-        year: 2023,
-        price: 250000,
-        image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&h=500&fit=crop',
-        description: 'L\'icône allemande avec un flat-6 biturbo de 650 ch. Le parfait équilibre entre confort et performance.'
+        brand: 'Renault',
+        model: 'Clio',
+        year: 2005,
+        price: 1000,
+        image: 'https://static.actu.fr/uploads/2017/03/IMG_0983.JPG',
+        description: 'LIBERTÉ 🗣️ÉGALITÉ☝️RENAULT COUPÉ🗣️'
     },
     {
         id: Date.now() + 3,
