@@ -194,6 +194,10 @@ header {
     }
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 .modal-content {
     background: var(--bg-card);
     border-radius: 20px;
