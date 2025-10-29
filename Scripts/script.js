@@ -1,4 +1,3 @@
-// Données
 const state = {
     cars: [],
     filteredCars: [],
@@ -9,7 +8,6 @@ const state = {
     sortFilter: 'newest'
 };
 
-// Proxy pour la synchronisation automatique
 const stateProxy = new Proxy(state, {
     set(target, property, value) {
         target[property] = value;
@@ -38,7 +36,6 @@ const stateProxy = new Proxy(state, {
     }
 });
 
-// Exemples de voitures
 const exampleCars = [
     {
         id: Date.now() + 1,
@@ -78,7 +75,6 @@ const exampleCars = [
     }
 ];
 
-// Initialisation
 function init() {
     loadThemeFromStorage();
 
