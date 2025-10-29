@@ -40,7 +40,7 @@ const exampleCars = [
     {
         id: Date.now() + 1,
         brand: 'Ferrari',
-        model: '488 Pista',
+        model: 'La ferrari',
         year: 2019,
         price: 450000,
         image: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=800&h=500&fit=crop',
@@ -57,8 +57,8 @@ const exampleCars = [
     },
     {
         id: Date.now() + 3,
-        brand: 'Lamborghini',
-        model: 'Huracán EVO',
+        brand: 'Bugatti',
+        model: 'chiron',
         year: 2022,
         price: 280000,
         image: 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&h=500&fit=crop',
